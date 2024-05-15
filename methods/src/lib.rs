@@ -21,6 +21,8 @@ mod tests {
     use alloy_sol_types::SolValue;
     use risc0_zkvm::{default_executor, ExecutorEnv};
 
+    use guest::square::SquareJournal;
+
     #[test]
     fn proves_even_number() {
         let even_number = U256::from(1304);
@@ -49,5 +51,26 @@ mod tests {
 
         // NOTE: Use the executor to run tests without proving.
         default_executor().execute(env, super::IS_EVEN_ELF).unwrap();
+    }
+
+    #[test]
+    fn proves_square_number() {
+        let input = U256::from(5);
+        let square = U256::from(25);
+
+        let expected = SquareJournal { input, square };
+
+        let env = ExecutorEnv::builder()
+            .write_slice(&expected.abi_encode())
+            .build()
+            .unwrap();
+
+        // NOTE: Use the executor to run tests without proving.
+        let session_info = default_executor().execute(env, super::SQUARE_ELF).unwrap();
+
+        let journal = SquareJournal::abi_decode(&session_info.journal.bytes, true).unwrap();
+
+        assert_eq!(journal.input, expected.input);
+        assert_eq!(journal.square, expected.square);
     }
 }

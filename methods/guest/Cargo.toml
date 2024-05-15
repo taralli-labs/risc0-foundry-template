@@ -3,14 +3,21 @@ name = "guests"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "guest"
+path = "src/lib.rs"
+
 [[bin]]
 name = "is-even"
 path = "src/bin/is_even.rs"
 
-[workspace]
+[[bin]]
+name = "square"
+path = "src/bin/square.rs"
 
 [dependencies]
 alloy-primitives = { version = "0.6", default-features = false, features = ["rlp", "serde", "std"] }
+alloy-sol-macro = "0.7.4"
 alloy-sol-types = { version = "0.6" }
 risc0-zkvm = {  version = "0.21", default-features = false, features = ['std'] }
 

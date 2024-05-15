@@ -54,14 +54,61 @@ checksum = "82e92100dee7fd1e44abbe0ef6607f18758cf0ad4e483f4c65ff5c8d85428a6d"
 dependencies = [
  "const-hex",
  "dunce",
- "heck",
+ "heck 0.4.1",
  "indexmap",
  "proc-macro-error",
  "proc-macro2",
  "quote",
  "syn 2.0.49",
- "syn-solidity",
+ "syn-solidity 0.6.3",
  "tiny-keccak",
+]
+
+[[package]]
+name = "alloy-sol-macro"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7dbd17d67f3e89478c8a634416358e539e577899666c927bc3d2b1328ee9b6ca"
+dependencies = [
+ "alloy-sol-macro-expander",
+ "alloy-sol-macro-input",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.49",
+]
+
+[[package]]
+name = "alloy-sol-macro-expander"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2c6da95adcf4760bb4b108fefa51d50096c5e5fdd29ee72fed3e86ee414f2e34"
+dependencies = [
+ "alloy-sol-macro-input",
+ "const-hex",
+ "heck 0.4.1",
+ "indexmap",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.49",
+ "syn-solidity 0.7.4",
+ "tiny-keccak",
+]
+
+[[package]]
+name = "alloy-sol-macro-input"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "32c8da04c1343871fb6ce5a489218f9c85323c8340a36e9106b5fc98d4dd59d5"
+dependencies = [
+ "const-hex",
+ "dunce",
+ "heck 0.5.0",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.49",
+ "syn-solidity 0.7.4",
 ]
 
 [[package]]
@@ -71,7 +118,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3e7c6a8c492b1d6a4f92a8fc6a13cf39473978dd7d459d7221969ce5a73d97cd"
 dependencies = [
  "alloy-primitives",
- "alloy-sol-macro",
+ "alloy-sol-macro 0.6.3",
  "const-hex",
  "serde",
 ]
@@ -737,6 +784,7 @@ name = "guests"
 version = "0.1.0"
 dependencies = [
  "alloy-primitives",
+ "alloy-sol-macro 0.7.4",
  "alloy-sol-types",
  "risc0-zkvm",
 ]
@@ -761,6 +809,12 @@ name = "heck"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
+
+[[package]]
+name = "heck"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
 
 [[package]]
 name = "hex"
@@ -1517,6 +1571,18 @@ name = "syn-solidity"
 version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e656cbcef8a77543b5accbd76f60f9e0bc4be364b0aba4263a6f313f8a355511"
+dependencies = [
+ "paste",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.49",
+]
+
+[[package]]
+name = "syn-solidity"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8db114c44cf843a8bacd37a146e37987a0b823a0e8bc4fdc610c9c72ab397a5"
 dependencies = [
  "paste",
  "proc-macro2",
